@@ -14,27 +14,26 @@ const MiningAnimation = ({ isMining, isSubscribed, onClick }: MiningAnimationPro
 
   return (
     <div className="relative">
-      {/* Main Mining Circle */}
+      {/* Main Mining Circle - matching the reference image gradient */}
       <div className="relative">
         <Button
           onClick={onClick}
           className={`
-            w-48 h-48 rounded-full relative overflow-hidden transition-all duration-500 transform hover:scale-105
+            w-48 h-48 rounded-full relative overflow-hidden transition-all duration-500 transform hover:scale-105 border-0
             ${isMining 
-              ? 'bg-gradient-to-r from-green-500 to-emerald-600 shadow-2xl shadow-green-500/50' 
-              : 'bg-gradient-to-r from-purple-600 to-pink-600 shadow-2xl shadow-purple-500/50'
+              ? 'bg-gradient-to-br from-cyan-400 via-blue-500 to-purple-600 shadow-2xl shadow-cyan-500/50' 
+              : 'bg-gradient-to-br from-cyan-500 via-purple-500 to-pink-600 shadow-2xl shadow-purple-500/50'
             }
           `}
         >
-          {/* Glowing outer ring */}
+          {/* Outer glow effect matching the reference */}
           <div 
             className={`
-              absolute inset-0 rounded-full 
+              absolute inset-[-20px] rounded-full 
               ${isMining 
-                ? 'bg-gradient-to-r from-green-400 to-emerald-500 animate-pulse' 
-                : 'bg-gradient-to-r from-purple-500 to-pink-500'
+                ? 'bg-gradient-to-br from-cyan-400/30 via-blue-500/30 to-purple-600/30 animate-pulse blur-xl' 
+                : 'bg-gradient-to-br from-cyan-500/30 via-purple-500/30 to-pink-600/30 blur-xl'
               }
-              opacity-75 blur-xl
             `}
           />
           
@@ -47,25 +46,23 @@ const MiningAnimation = ({ isMining, isSubscribed, onClick }: MiningAnimationPro
                 ) : (
                   <Flame className="w-16 h-16 text-orange-400 animate-pulse" />
                 )}
-                <span className="text-white font-bold mt-2">ACTIVE</span>
+                <div className="w-8 h-2 bg-white/60 rounded-full mt-4"></div>
               </>
             ) : (
               <>
-                <Zap className="w-16 h-16 text-white opacity-75" />
-                <span className="text-white font-bold mt-2">
-                  {isSubscribed ? 'START' : 'ACTIVATE'}
-                </span>
+                <Zap className="w-16 h-16 text-white opacity-90" />
+                <div className="w-8 h-2 bg-white/40 rounded-full mt-4"></div>
               </>
             )}
           </div>
         </Button>
 
-        {/* Rotating energy rings when mining */}
+        {/* Rotating energy rings when mining - matching reference style */}
         {isMining && (
           <>
-            <div className="absolute inset-0 w-48 h-48 rounded-full border-4 border-green-400 opacity-30 animate-spin" 
+            <div className="absolute inset-0 w-48 h-48 rounded-full border-2 border-cyan-400/40 animate-spin" 
                  style={{ animationDuration: '3s' }} />
-            <div className="absolute inset-2 w-44 h-44 rounded-full border-2 border-emerald-300 opacity-20 animate-spin" 
+            <div className="absolute inset-2 w-44 h-44 rounded-full border border-purple-400/30 animate-spin" 
                  style={{ animationDuration: '2s', animationDirection: 'reverse' }} />
           </>
         )}
@@ -77,7 +74,7 @@ const MiningAnimation = ({ isMining, isSubscribed, onClick }: MiningAnimationPro
           {[...Array(6)].map((_, i) => (
             <div
               key={i}
-              className="absolute w-2 h-2 bg-green-400 rounded-full animate-ping"
+              className="absolute w-2 h-2 bg-cyan-400 rounded-full animate-ping"
               style={{
                 top: `${20 + Math.random() * 60}%`,
                 left: `${20 + Math.random() * 60}%`,

@@ -43,25 +43,22 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-gray-900 to-slate-800 relative overflow-hidden">
-      {/* Primary background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-900/98 via-slate-900/95 to-gray-800/90"></div>
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-gray-900 relative overflow-hidden">
+      {/* Primary background matching the image */}
+      <div className="absolute inset-0 bg-gradient-to-br from-gray-900/95 via-slate-900/90 to-slate-800/95"></div>
       
-      {/* Secondary gradient overlay for depth */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+      {/* Dark overlay for depth */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20"></div>
       
-      {/* Accent gradient for visual interest */}
-      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-cyan-900/15 to-transparent"></div>
+      {/* Subtle accent gradients */}
+      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-cyan-900/10 to-transparent"></div>
       
-      {/* Subtle radial gradient for center focus */}
-      <div className="absolute inset-0 bg-radial-gradient from-cyan-900/10 via-transparent to-transparent"></div>
-      
-      <div className="relative z-10 container mx-auto px-4 py-8">
-        <header className="text-center mb-8">
-          <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-cyan-400 via-blue-400 to-teal-400 bg-clip-text text-transparent mb-4">
+      <div className="relative z-10 container mx-auto px-4 py-6">
+        <header className="text-center mb-6">
+          <h1 className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent mb-3">
             CEX.IO Power Tap
           </h1>
-          <p className="text-slate-300 text-lg">
+          <p className="text-slate-300 text-base">
             Complete the mission, earn the commission!
           </p>
         </header>
