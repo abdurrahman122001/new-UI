@@ -60,8 +60,23 @@ export default function MiningDashboard({
             </div>
           </div>
 
-          {/* Top Progress Bars (Auto Mining & Data Mind) */}
-          <StatsSection autoRate={0.00233380} dataMindRate={0.00010126} />
+          {/* Top Progress Bars */}
+          <StatsSection
+            autoRate={0.00233380}
+            dataMindRate={0.00010126}
+          />
+
+          {/* Activate button (above the machine) */}
+          {!isSubscribed && (
+            <div className="flex justify-center mb-4">
+              <Button
+                onClick={onMiningClick}
+                className="bg-gradient-to-r from-cyan-400 to-purple-400 text-white font-bold py-2 px-6 rounded-full"
+              >
+                Activate
+              </Button>
+            </div>
+          )}
 
           {/* Machine Button */}
           <div className="flex justify-center mb-2">
@@ -72,24 +87,17 @@ export default function MiningDashboard({
             />
           </div>
 
-          {/* Activate / Active Badge (below the machine) */}
-          <div className="flex justify-center mb-8 mt-3">
-            {!isSubscribed ? (
-              <Button
-                onClick={onMiningClick}
-                className="bg-gradient-to-r mt-4 from-cyan-400 to-purple-400 text-white font-bold py-2 px-6 rounded-full"
-              >
-                Activate
-              </Button>
-            ) : subscriptionTier ? (
+          {/* Active badge (below the machine) */}
+          {isSubscribed && subscriptionTier && (
+            <div className="flex justify-center mb-8">
               <Button
                 disabled
                 className="uppercase tracking-wider bg-green-500/80 text-white py-2 px-6 rounded-full"
               >
                 {subscriptionTier.charAt(0).toUpperCase() + subscriptionTier.slice(1)} Mine Active
               </Button>
-            ) : null}
-          </div>
+            </div>
+          )}
 
           {/* Mining Rate & Next Boost */}
           <div className="grid grid-cols-2 gap-4">
@@ -105,8 +113,11 @@ export default function MiningDashboard({
         </CardContent>
       </Card>
 
-      {/* Bottom Progress Cards (Fuel & Activities) */}
-      <ProgressSection fuelPct={75} activityPct={35} />
+      {/* Bottom Progress Cards */}
+      <ProgressSection
+        fuelPct={75}
+        activityPct={35}
+      />
     </div>
   );
 }

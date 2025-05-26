@@ -43,13 +43,13 @@ export default function MiningAnimation({
               {animationType === 'rotating' ? (
                 <Zap className="w-16 h-16 text-white animate-spin" />
               ) : (
-                <Flame className="w-16 h-16 text-orange-400 animate-pulse" />
+                <Flame className="w-32 h-32 text-orange-400 animate-pulse" />
               )}
               <div className="w-8 h-2 bg-white/60 rounded-full mt-4" />
             </>
           ) : (
             <>
-              <Zap className="w-16 h-16 text-white opacity-90" />
+              <Zap className="w-32 h-32 text-white opacity-90" />
               <div className="w-8 h-2 bg-white/40 rounded-full mt-4" />
             </>
           )}
