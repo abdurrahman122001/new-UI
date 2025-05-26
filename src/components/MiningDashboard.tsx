@@ -49,12 +49,12 @@ const MiningDashboard = ({
           <div className="text-center mb-8">
             <h2 className="text-slate-400 text-lg mb-6 font-medium">Total Earnings</h2>
             
-            {/* Large earnings display matching the reference */}
+            {/* Smaller earnings display matching the reference */}
             <div className="flex items-center justify-center mb-4">
-              <div className="text-7xl font-bold bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent tracking-wider">
+              <div className="text-5xl font-bold bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent tracking-wider">
                 700.00
               </div>
-              <div className="text-purple-400 text-2xl ml-4 font-semibold">CEXP</div>
+              <div className="text-purple-400 text-xl ml-3 font-semibold">CEXP</div>
             </div>
             
             {/* Today's earnings */}

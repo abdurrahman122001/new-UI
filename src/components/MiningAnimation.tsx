@@ -57,13 +57,24 @@ const MiningAnimation = ({ isMining, isSubscribed, onClick }: MiningAnimationPro
           </div>
         </Button>
 
-        {/* Rotating energy rings when mining - matching reference style */}
+        {/* Rotating energy rings when mining - exactly like in the image */}
         {isMining && (
           <>
-            <div className="absolute inset-0 w-48 h-48 rounded-full border-2 border-cyan-400/40 animate-spin" 
-                 style={{ animationDuration: '3s' }} />
-            <div className="absolute inset-2 w-44 h-44 rounded-full border border-purple-400/30 animate-spin" 
-                 style={{ animationDuration: '2s', animationDirection: 'reverse' }} />
+            {/* Outer rotating ring */}
+            <div 
+              className="absolute inset-0 w-48 h-48 rounded-full border-4 border-transparent border-t-cyan-400/60 border-r-cyan-400/40 animate-spin" 
+              style={{ animationDuration: '2s' }} 
+            />
+            {/* Inner counter-rotating ring */}
+            <div 
+              className="absolute inset-4 w-40 h-40 rounded-full border-2 border-transparent border-t-purple-400/50 border-l-purple-400/30 animate-spin" 
+              style={{ animationDuration: '3s', animationDirection: 'reverse' }} 
+            />
+            {/* Innermost ring */}
+            <div 
+              className="absolute inset-8 w-32 h-32 rounded-full border border-transparent border-t-pink-400/40 animate-spin" 
+              style={{ animationDuration: '1.5s' }} 
+            />
           </>
         )}
       </div>
