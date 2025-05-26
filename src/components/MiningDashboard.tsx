@@ -1,9 +1,11 @@
-
+// src/components/MiningDashboard.tsx
 import { useState, useEffect } from 'react';
-import { Zap, X } from 'lucide-react';
+import { X } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import MiningAnimation from './MiningAnimation';
 import ProgressSection from './ProgressSection';
+import StatsSection from './StatsSection';
 
 interface MiningDashboardProps {
   totalEarnings: number;
@@ -14,20 +16,20 @@ interface MiningDashboardProps {
   onMiningClick: () => void;
 }
 
-const MiningDashboard = ({
+export default function MiningDashboard({
   totalEarnings,
   dailyEarnings,
   isMining,
   isSubscribed,
   subscriptionTier,
-  onMiningClick
-}: MiningDashboardProps) => {
+  onMiningClick,
+}: MiningDashboardProps) {
   const [animatedEarnings, setAnimatedEarnings] = useState(totalEarnings);
 
   useEffect(() => {
     if (isMining) {
       const interval = setInterval(() => {
-        setAnimatedEarnings(prev => prev + 0.01);
+        setAnimatedEarnings((prev) => prev + 0.01);
       }, 5000);
       return () => clearInterval(interval);
     }
@@ -37,10 +39,30 @@ const MiningDashboard = ({
 
   return (
     <div className="space-y-6">
-      {/* Total Earnings Card - matching the reference image layout */}
+      {/* Activate / Active Badge */}
+      {!isSubscribed ? (
+        <div className="flex justify-center">
+          <Button
+            onClick={onMiningClick}
+            className="bg-gradient-to-r from-cyan-400 to-purple-400 text-white font-bold py-3 px-8 rounded-full"
+          >
+            Activate
+          </Button>
+        </div>
+      ) : subscriptionTier ? (
+        <div className="flex justify-center">
+          <Button
+            disabled
+            className="uppercase tracking-wider bg-slate-800/50 text-cyan-300 border border-cyan-500/30 py-2 px-6 rounded-full"
+          >
+            {subscriptionTier.charAt(0).toUpperCase() + subscriptionTier.slice(1)} Mine Active
+          </Button>
+        </div>
+      ) : null}
+
       <Card className="bg-slate-900/60 border border-cyan-500/30 backdrop-blur-xl shadow-2xl shadow-cyan-500/20 rounded-2xl overflow-hidden">
         <CardContent className="p-8 relative">
-          {/* Close button like in the reference */}
+          {/* Close Icon */}
           <div className="absolute top-4 right-4">
             <X className="w-6 h-6 text-slate-400" />
           </div>
@@ -48,37 +70,39 @@ const MiningDashboard = ({
           {/* Total Earnings Header */}
           <div className="text-center mb-8">
             <h2 className="text-slate-400 text-lg mb-6 font-medium">Total Earnings</h2>
-            
-            {/* Smaller earnings display matching the reference */}
             <div className="flex items-center justify-center mb-4">
-              <div className="text-5xl font-bold bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent tracking-wider">
-                700.00
+              <div className="text-5xl font-bold bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">
+                {animatedEarnings.toFixed(2)}
               </div>
               <div className="text-purple-400 text-xl ml-3 font-semibold">CEXP</div>
             </div>
-            
-            {/* Today's earnings */}
             <div className="text-green-400 text-lg font-medium">
               +{dailyEarnings.toFixed(2)} CEXP today
             </div>
           </div>
 
-          {/* Mining Button - centered like in reference */}
+          {/* Top Progress Bars (Auto Mining & Data Mind) */}
+          <StatsSection
+            autoRate={0.00233380}
+            dataMindRate={0.00010126}
+          />
+
+          {/* ←←← MACHINE BUTTON ALWAYS VISIBLE ←←← */}
           <div className="flex justify-center mb-8">
-            <MiningAnimation 
-              isMining={isMining} 
+            <MiningAnimation
+              isMining={isMining}
               isSubscribed={isSubscribed}
               onClick={onMiningClick}
             />
           </div>
 
-          {/* Mining Stats - two cards side by side */}
+          {/* Mining Rate & Next Boost */}
           <div className="grid grid-cols-2 gap-4">
-            <div className="bg-slate-800/50 border border-slate-600/30 rounded-xl p-4 text-center backdrop-blur-sm">
+            <div className="bg-slate-800/50 border border-slate-600/30 rounded-xl p-4 text-center">
               <div className="text-slate-400 text-sm mb-1">Mining Rate</div>
               <div className="text-cyan-400 font-bold text-lg">{miningRate}</div>
             </div>
-            <div className="bg-slate-800/50 border border-slate-600/30 rounded-xl p-4 text-center backdrop-blur-sm">
+            <div className="bg-slate-800/50 border border-slate-600/30 rounded-xl p-4 text-center">
               <div className="text-slate-400 text-sm mb-1">Next Boost</div>
               <div className="text-pink-400 font-bold text-lg">2h 15m</div>
             </div>
@@ -86,10 +110,12 @@ const MiningDashboard = ({
         </CardContent>
       </Card>
 
-      {/* Progress Section */}
-      <ProgressSection subscriptionTier={subscriptionTier} />
+      {/* Bottom Progress Cards (Fuel & Activities) */}
+      <ProgressSection 
+        // you can pass real values here
+        fuelPct={75} 
+        activityPct={35} 
+      />
     </div>
   );
-};
-
-export default MiningDashboard;
+}
