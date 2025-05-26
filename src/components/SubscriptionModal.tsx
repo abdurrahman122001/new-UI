@@ -59,7 +59,7 @@ const SubscriptionModal = ({ isOpen, onClose, onSubscribe }: SubscriptionModalPr
           </Card>
 
           {/* Gold Plan */}
-          <Card className="bg-gradient-to-b from-yellow-900/20 to-orange-900/20 border-yellow-500/50 hover:border-yellow-400 transition-all duration-300 hover:scale-105 relative overflow-hidden">
+          <Card className="bg-slate-800/50 border-slate-600 hover:border-slate-400 transition-all duration-300 hover:scale-105">
             <div className="absolute top-4 right-4 bg-gradient-to-r from-yellow-400 to-orange-400 text-black px-3 py-1 rounded-full text-sm font-bold">
               POPULAR
             </div>
