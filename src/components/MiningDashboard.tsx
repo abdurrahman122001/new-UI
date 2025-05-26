@@ -4,8 +4,8 @@ import { X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import MiningAnimation from './MiningAnimation';
-import ProgressSection from './ProgressSection';
 import StatsSection from './StatsSection';
+import ProgressSection from './ProgressSection';
 
 interface MiningDashboardProps {
   totalEarnings: number;
@@ -29,7 +29,7 @@ export default function MiningDashboard({
   useEffect(() => {
     if (isMining) {
       const interval = setInterval(() => {
-        setAnimatedEarnings((prev) => prev + 0.01);
+        setAnimatedEarnings(prev => prev + 0.01);
       }, 5000);
       return () => clearInterval(interval);
     }
@@ -39,27 +39,6 @@ export default function MiningDashboard({
 
   return (
     <div className="space-y-6">
-      {/* Activate / Active Badge */}
-      {!isSubscribed ? (
-        <div className="flex justify-center">
-          <Button
-            onClick={onMiningClick}
-            className="bg-gradient-to-r from-cyan-400 to-purple-400 text-white font-bold py-3 px-8 rounded-full"
-          >
-            Activate
-          </Button>
-        </div>
-      ) : subscriptionTier ? (
-        <div className="flex justify-center">
-          <Button
-            disabled
-            className="uppercase tracking-wider bg-slate-800/50 text-cyan-300 border border-cyan-500/30 py-2 px-6 rounded-full"
-          >
-            {subscriptionTier.charAt(0).toUpperCase() + subscriptionTier.slice(1)} Mine Active
-          </Button>
-        </div>
-      ) : null}
-
       <Card className="bg-slate-900/60 border border-cyan-500/30 backdrop-blur-xl shadow-2xl shadow-cyan-500/20 rounded-2xl overflow-hidden">
         <CardContent className="p-8 relative">
           {/* Close Icon */}
@@ -82,18 +61,34 @@ export default function MiningDashboard({
           </div>
 
           {/* Top Progress Bars (Auto Mining & Data Mind) */}
-          <StatsSection
-            autoRate={0.00233380}
-            dataMindRate={0.00010126}
-          />
+          <StatsSection autoRate={0.00233380} dataMindRate={0.00010126} />
 
-          {/* ←←← MACHINE BUTTON ALWAYS VISIBLE ←←← */}
-          <div className="flex justify-center mb-8">
+          {/* Machine Button */}
+          <div className="flex justify-center mb-2">
             <MiningAnimation
               isMining={isMining}
               isSubscribed={isSubscribed}
               onClick={onMiningClick}
             />
+          </div>
+
+          {/* Activate / Active Badge (below the machine) */}
+          <div className="flex justify-center mb-8 mt-3">
+            {!isSubscribed ? (
+              <Button
+                onClick={onMiningClick}
+                className="bg-gradient-to-r mt-4 from-cyan-400 to-purple-400 text-white font-bold py-2 px-6 rounded-full"
+              >
+                Activate
+              </Button>
+            ) : subscriptionTier ? (
+              <Button
+                disabled
+                className="uppercase tracking-wider bg-green-500/80 text-white py-2 px-6 rounded-full"
+              >
+                {subscriptionTier.charAt(0).toUpperCase() + subscriptionTier.slice(1)} Mine Active
+              </Button>
+            ) : null}
           </div>
 
           {/* Mining Rate & Next Boost */}
@@ -111,11 +106,7 @@ export default function MiningDashboard({
       </Card>
 
       {/* Bottom Progress Cards (Fuel & Activities) */}
-      <ProgressSection 
-        // you can pass real values here
-        fuelPct={75} 
-        activityPct={35} 
-      />
+      <ProgressSection fuelPct={75} activityPct={35} />
     </div>
   );
 }
