@@ -30,7 +30,7 @@ export default function SubscriptionModal({
               <div className="text-4xl font-bold text-slate-300 mb-6">
                 $10<span className="text-lg">/month</span>
               </div>
-              {['0.5 CEXP/hr rate', 'Basic animations', 'Daily rewards', 'Silver referrals'].map(f => (
+              {['0.5 UPDATEME/hr rate', 'Basic animations', 'Daily rewards', 'Silver referrals'].map(f => (
                 <div key={f} className="flex items-center space-x-3 mb-2">
                   <div className="w-2 h-2 bg-slate-400 rounded-full" />
                   <span className="text-slate-300">{f}</span>
@@ -55,7 +55,7 @@ export default function SubscriptionModal({
                 $20<span className="text-lg">/month</span>
               </div>
               {[
-                '1.2 CEXP/hr rate',
+                '1.2 UPDATEME/hr rate',
                 'Premium flame animations',
                 '2× daily rewards',
                 'Gold referrals',
