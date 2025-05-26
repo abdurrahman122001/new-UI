@@ -38,14 +38,14 @@ const MiningDashboard = ({
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
       {/* Total Earnings Card */}
-      <Card className="bg-slate-800/30 border-slate-600/50 backdrop-blur-md shadow-2xl">
+      <Card className="bg-slate-800/40 border-slate-600/60 backdrop-blur-lg shadow-2xl shadow-cyan-500/10">
         <CardContent className="p-8">
           <div className="text-center">
             <h2 className="text-slate-300 text-lg mb-4">Total Earnings</h2>
-            <div className="text-6xl font-bold bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent mb-2">
+            <div className="text-6xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent mb-2">
               {animatedEarnings.toFixed(2)}
             </div>
-            <div className="text-purple-400 text-xl mb-8">CEXP</div>
+            <div className="text-cyan-400 text-xl mb-8">CEXP</div>
             <div className="text-green-400 text-lg">
               +{dailyEarnings.toFixed(2)} CEXP today
             </div>
@@ -62,13 +62,13 @@ const MiningDashboard = ({
 
           {/* Mining Stats */}
           <div className="grid grid-cols-2 gap-4 mt-8">
-            <div className="bg-slate-700/40 border border-slate-600/30 rounded-lg p-4 text-center backdrop-blur-sm">
+            <div className="bg-slate-700/50 border border-slate-600/40 rounded-lg p-4 text-center backdrop-blur-sm shadow-lg">
               <div className="text-slate-400 text-sm">Mining Rate</div>
               <div className="text-cyan-400 font-bold">{miningRate}</div>
             </div>
-            <div className="bg-slate-700/40 border border-slate-600/30 rounded-lg p-4 text-center backdrop-blur-sm">
+            <div className="bg-slate-700/50 border border-slate-600/40 rounded-lg p-4 text-center backdrop-blur-sm shadow-lg">
               <div className="text-slate-400 text-sm">Next Boost</div>
-              <div className="text-pink-400 font-bold">2h 15m</div>
+              <div className="text-teal-400 font-bold">2h 15m</div>
             </div>
           </div>
         </CardContent>

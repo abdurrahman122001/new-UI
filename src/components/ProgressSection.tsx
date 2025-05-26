@@ -8,7 +8,7 @@ interface ProgressSectionProps {
 
 const ProgressSection = ({ subscriptionTier }: ProgressSectionProps) => {
   return (
-    <Card className="bg-slate-800/30 border-slate-600/50 backdrop-blur-md shadow-2xl">
+    <Card className="bg-slate-800/40 border-slate-600/60 backdrop-blur-lg shadow-2xl shadow-cyan-500/10">
       <CardContent className="p-8">
         <h2 className="text-2xl font-bold text-slate-300 mb-8 text-center">
           Your Progress
@@ -44,15 +44,15 @@ const ProgressSection = ({ subscriptionTier }: ProgressSectionProps) => {
 
         {/* Weekly Stats */}
         <div className="grid grid-cols-2 gap-4 mb-8">
-          <div className="bg-gradient-to-r from-cyan-500/20 to-blue-500/20 rounded-lg p-4 border border-cyan-500/40 backdrop-blur-sm">
+          <div className="bg-gradient-to-r from-cyan-500/20 to-blue-500/20 rounded-lg p-4 border border-cyan-500/40 backdrop-blur-sm shadow-lg">
             <div className="text-slate-400 text-sm">Weekly Mining Fuel Level</div>
             <div className="text-2xl font-bold text-white">75%</div>
-            <button className="w-full mt-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg py-2 text-sm font-bold transition-colors shadow-lg shadow-purple-500/30">
+            <button className="w-full mt-2 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white rounded-lg py-2 text-sm font-bold transition-all shadow-lg shadow-cyan-500/30">
               Boost
             </button>
           </div>
           
-          <div className="bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-lg p-4 border border-purple-500/40 backdrop-blur-sm">
+          <div className="bg-gradient-to-r from-teal-500/20 to-cyan-500/20 rounded-lg p-4 border border-teal-500/40 backdrop-blur-sm shadow-lg">
             <div className="text-slate-400 text-sm">Weekly Activities Level</div>
             <div className="text-2xl font-bold text-white">35%</div>
           </div>
@@ -68,7 +68,7 @@ const ProgressSection = ({ subscriptionTier }: ProgressSectionProps) => {
           </div>
           <div className="w-full bg-slate-700/60 rounded-full h-3 border border-slate-600/30">
             <div 
-              className="bg-gradient-to-r from-cyan-400 via-purple-500 to-yellow-400 h-3 rounded-full transition-all duration-500 shadow-lg"
+              className="bg-gradient-to-r from-cyan-400 via-blue-500 to-teal-400 h-3 rounded-full transition-all duration-500 shadow-lg"
               style={{ width: subscriptionTier === 'gold' ? '100%' : subscriptionTier === 'silver' ? '50%' : '0%' }}
             />
           </div>
