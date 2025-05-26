@@ -48,7 +48,7 @@ export default function IndexPage() {
           <h1 className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent mb-3">
            UpdateMe
           </h1>
-          <p className="text-slate-300 text-base">Complete the mission, earn the commission!</p>
+          <p className="text-slate-300 text-base">Own the Future. Start Mining Now!</p>
         </header>
 
         <MiningDashboard
